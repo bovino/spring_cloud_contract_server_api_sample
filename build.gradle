@@ -1,0 +1,88 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.2.2.RELEASE'
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'groovy'
+}
+
+apply plugin: 'spring-cloud-contract'
+apply plugin: 'maven-publish'
+
+group = 'com.bovino'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "Hoxton.SR4")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+contracts {
+
+	baseClassForTests = 'com.bovino.cdcdemo.contract.base.TestBaseForContracts'
+	targetFramework = org.springframework.cloud.contract.verifier.config.TestFramework.JUNIT5
+	// Para usar Spock ao inves de JUNIT
+	// targetFramework = org.springframework.cloud.contract.verifier.config.TestFramework.SPOCK
+
+	// se quiser pode customizar outros parametros do Spring Cloud Contract
+	// testMode = 'MockMvc'
+	// generatedTestSourcesDir = project.file("${project.buildDir}/generated-test-sources/contracts")
+	// contractsDslDir = "${project.rootDir}/src/test/resources/contracts"
+	// basePackageForTests = 'org.springframework.cloud.verifier.tests'
+	// stubsOutputDir = project.file("${project.buildDir}/stubs")
+	// the following properties are used when you want to provide where the JAR with contract lays
+	// contractDependency {
+		// stringNotation = ''
+	// }
+	// contractsPath = ''
+	// contractsWorkOffline = false
+	// contractRepository {
+		// cacheDownloadedContracts(true)
+	// }
+}
+
+test {
+	useJUnitPlatform()
+}
+
+publishing {
+  publications {
+		stubs(MavenPublication) {
+			artifact verifierStubsJar
+		}
+	}
+}
