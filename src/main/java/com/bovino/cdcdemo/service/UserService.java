@@ -10,5 +10,5 @@ public interface UserService {
     List<User> getAllUsers();
     User getUserById(Integer id);
     User saveNewUser(User user);
-    ResponseEntity<Void> deleteUser(Integer id);
+    ResponseEntity<Void> deleteUser(Integer[] id);
 }

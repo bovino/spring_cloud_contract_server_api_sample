@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @DeleteMapping("/user")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id){
-        return userService.deleteUser(id);
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer[] ids){
+        return userService.deleteUser(ids);
     }
 }

@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    /* @Override
+    @Override
     public ResponseEntity<Void> deleteUser(Integer[] ids) {
         for(Integer id: ids){
             User userFound = getUserById(id);
@@ -63,13 +63,13 @@ public class UserServiceImpl implements UserService {
             resultList.remove(userFound);
         }
         return new ResponseEntity<Void>(HttpStatus.OK);
-    } */
+    }
 
-    @Override
+    /* @Override
     public ResponseEntity<Void> deleteUser(Integer id) {
         User userFound = getUserById(id);
         List<User> resultList = getAllUsers();
         resultList.remove(userFound);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
+    } */
 }

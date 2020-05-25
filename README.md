@@ -1,7 +1,38 @@
-# spring_cloud_contract_server_api_sample
-Sample application to demonstrate use of Consumer Driven Contract (CDC) with SpringBoot 2.3.0 + Spring Cloud Contract - Server API Sample
+# Consumer-Driven Contract (CDC) Test Sample - Server API application
+Sample application to demonstrate use of Consumer Driven Contract (CDC) with SpringBoot 2.3.0 + Spring Cloud Contract - Server API Sample.
+
+This application uses:
+
+- Spring Boot 2.3.0
+- Spring Cloud Hoxton.SR4
+- Spring Cloud Contract
+- Spring Web+Rest
+- Lombok
+- Java 8
+- Gradle (Gradle wrapper)
+- JUnit e Mockito
+
+You can see the client API application here: https://github.com/bovino/spring_cloud_contract_client_api_sample 
 
 # Getting Started
+This application uses Gradle (Gradle wrapper) and a few useful commands are:
+
+*Basic Build:* gradle clean build
+
+*Publish (includes generation and publish of contract stubs for your local repo):*
+
+gradle clean publishToMavenLocal
+
+*Run tests (including the CDC tests):*
+gradle clean test
+
+Before using this application you will need:
+
+- Some IDE with Lombok support (i like IntelliJ)
+- Any API Rest client (i like Postman)
+- JDK 1.8,0_251 or newer
+- Configure your JAVA_HOME environment variable
+- You need the ports 8080 (server API) and 8081 (client API) to be free
 
 ### Reference Documentation
 For further reference, please consider the following sections:
