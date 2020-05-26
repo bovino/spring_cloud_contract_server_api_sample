@@ -1,11 +1,11 @@
 # Producer-driven Contract and Consumer-Driven Contract tests Sample - Server API Provider application
-Sample application to demonstrate the use of Producer-driven Contract and Consumer Driven Contract tests with SpringBoot 2.3.0 + Spring Cloud Contract - Server API Sample.
+Sample application to demonstrate the use of Producer-driven Contract and Consumer Driven Contract tests with SpringBoot 2.3.0 + Spring Cloud Contract 2.2 - Server API Sample.
 
 This application uses:
 
 - Spring Boot 2.3.0
 - Spring Cloud Hoxton.SR4
-- Spring Cloud Contract
+- Spring Cloud Contract 2.2
 - Spring Web+Rest
 - Lombok
 - Java 8
