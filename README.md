@@ -17,14 +17,9 @@ You can see the client API application here: https://github.com/bovino/spring_cl
 # Getting Started
 This application uses Gradle (Gradle wrapper) and a few useful commands are:
 
-*Basic Build:* gradlew clean build
-
-*Publish (includes generation and publish of contract stubs for your local repo):*
-
-gradlew clean publishToMavenLocal
-
-*Run tests (including the contract tests):*
-gradlew clean test
+- #####Basic Build: <code>gradlew clean build</code>
+- #####Publish (includes generation and publish of contract stubs for your local maven repository): <code>gradlew clean publishToMavenLocal</code>
+- ##### Run tests (including the contract tests): <code>gradlew clean test</code>
 
 Before using this application you will need:
 
@@ -52,6 +47,7 @@ The following guides illustrate how to use and setup some features more concrete
 * [Gradle Setup for Spring Cloud Contract](https://cloud.spring.io/spring-cloud-contract/reference/html/gradle-project.html)
 * [Spring Cloud Contract Verifier Setup](https://cloud.spring.io/spring-cloud-contract/spring-cloud-contract.html#_spring_cloud_contract_verifier_setup)
 * [Como os testes de contrato melhoram a qualidade dos sistemas distribuídos](https://www.infoq.com/br/articles/contract-testing-spring-cloud-contract/)
+* [GitHub: Spring Cloud Contract Additional Code Samples](https://github.com/spring-cloud-samples/spring-cloud-contract-samples)
 
 ### Additional Links
 These additional references should also help you:
