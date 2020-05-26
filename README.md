@@ -17,14 +17,14 @@ You can see the client API application here: https://github.com/bovino/spring_cl
 # Getting Started
 This application uses Gradle (Gradle wrapper) and a few useful commands are:
 
-*Basic Build:* gradle clean build
+*Basic Build:* gradlew clean build
 
 *Publish (includes generation and publish of contract stubs for your local repo):*
 
-gradle clean publishToMavenLocal
+gradlew clean publishToMavenLocal
 
-*Run tests (including the CDC tests):*
-gradle clean test
+*Run tests (including the contract tests):*
+gradlew clean test
 
 Before using this application you will need:
 
