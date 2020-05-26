@@ -1,6 +1,7 @@
 buildscript {
 	repositories {
 		mavenCentral()
+		mavenLocal()
 	}
 	dependencies {
 		classpath 'org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.2.2.RELEASE'
@@ -57,26 +58,33 @@ contracts {
 	targetFramework = org.springframework.cloud.contract.verifier.config.TestFramework.JUNIT5
 	// Para usar Spock ao inves de JUNIT
 	// targetFramework = org.springframework.cloud.contract.verifier.config.TestFramework.SPOCK
+	// veja aqui outras opções de configuração para o Gradle
+	// https://cloud.spring.io/spring-cloud-contract/reference/html/gradle-project.html
 
-	// se quiser pode customizar outros parametros do Spring Cloud Contract
-	// testMode = 'MockMvc'
-	// generatedTestSourcesDir = project.file("${project.buildDir}/generated-test-sources/contracts")
-	// contractsDslDir = "${project.rootDir}/src/test/resources/contracts"
-	// basePackageForTests = 'org.springframework.cloud.verifier.tests'
-	// stubsOutputDir = project.file("${project.buildDir}/stubs")
-	// the following properties are used when you want to provide where the JAR with contract lays
-	// contractDependency {
-		// stringNotation = ''
-	// }
-	// contractsPath = ''
-	// contractsWorkOffline = false
-	// contractRepository {
-		// cacheDownloadedContracts(true)
-	// }
 }
 
 test {
+
 	useJUnitPlatform()
+
+	testLogging {
+		exceptionFormat = 'full'
+		outputs.upToDateWhen {false} // check why here: https://stackoverflow.com/a/20359498
+	}
+
+	afterTest { desc, result ->
+		logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+	}
+
+	afterSuite { desc, result ->
+		if (!desc.parent) {
+			println "Results: (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+			boolean skipTests = Boolean.parseBoolean(project.findProperty('SKIP_TESTS') ?: "false")
+			if (result.testCount == 0 && !skipTests) { // you REALLY should be using tests.... you know that :-)
+				throw new IllegalStateException("No tests were found. Failing the build")
+			}
+		}
+	}
 }
 
 publishing {

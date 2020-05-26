@@ -6,11 +6,11 @@ Contract.make {
     description "should return entered user"
     request {
         method 'DELETE'
-        url '/user/1'
+        url '/user'
         headers {
             contentType(applicationJson())
         }
-        // body("""[1,2]""")
+        body("""[1,2]""")
     }
     response {
         status 200

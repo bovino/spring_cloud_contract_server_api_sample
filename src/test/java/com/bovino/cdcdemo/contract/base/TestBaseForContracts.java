@@ -1,55 +1,40 @@
 package com.bovino.cdcdemo.contract.base;
 
-import com.bovino.cdcdemo.controller.UserController;
 import com.bovino.cdcdemo.domain.User;
 import com.bovino.cdcdemo.service.UserService;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import org.junit.Before;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.web.context.WebApplicationContext;
 import java.util.ArrayList;
 import java.util.List;
-import static org.mockito.ArgumentMatchers.any;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-abstract class TestBaseForContracts {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
+public class TestBaseForContracts {
 
-    @Autowired
-    UserController userController;
-
-    @MockBean
+    @Spy
     UserService userService;
 
-    @Before
+    @Autowired
+    private WebApplicationContext context;
+
+    @BeforeEach
     public void setup() {
 
-        StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(userController);
-        RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
+        // StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(new UserController());
+        // RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
+        MockitoAnnotations.initMocks(this);
+        RestAssuredMockMvc.webAppContextSetup(this.context);
 
         // se quiser mocar services (melhor, pra nao ir no BD real)
-        // se comentar daqui pra baixo, vai chamar o service real
-        User newUser = new User();
-        newUser.setId(1);
-        newUser.setLogin("new login 1");
-        newUser.setName("new username 1");
-        Mockito.when(userService.saveNewUser(any(User.class)))
-               .thenAnswer(i -> i.getArguments()[0]);
-
-        User getByIdUser = new User();
-        getByIdUser.setId(10);
-        getByIdUser.setLogin("login test 10");
-        getByIdUser.setName("name test 10");
-
-        Mockito.when(userService.getUserById(10))
-                .thenReturn(getByIdUser);
-
+        // Uso do Spy, vou alterar apenas "getAllUsers()", os demais usam a impl padrao da classe
         List<User> userList = new ArrayList<>();
         User u1 = new User();
         u1.setId(1);
@@ -64,8 +49,6 @@ abstract class TestBaseForContracts {
         userList.add(u1);
         userList.add(u2);
 
-        Mockito.when(userService.getAllUsers())
-                .thenReturn(userList);
-
+        Mockito.when(userService.getAllUsers()).thenReturn(userList);
     }
 }

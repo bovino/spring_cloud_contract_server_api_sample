@@ -14,7 +14,7 @@ Contract.make {
     }
     response {
         status 200
-        body("""{"id":1,"name":"new username 1","login":"new login 1" }""")
+        body("""{"id":3,"name":"new username 1","login":"new login 1" }""")
         headers {
             contentType(applicationJson())
         }

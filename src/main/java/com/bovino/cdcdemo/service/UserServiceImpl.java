@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Integer id) {
         Predicate<User> byIdPredicate = person -> person.getId().intValue() == id.intValue();
-        List<User> resultList = list.stream().filter(byIdPredicate).collect(Collectors.toList());
+        List<User> resultList = getAllUsers().stream().filter(byIdPredicate).collect(Collectors.toList());
         if(!resultList.isEmpty()){
           return resultList.get(0);
         } else {
@@ -57,19 +57,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<Void> deleteUser(Integer[] ids) {
+        List<User> resultList = getAllUsers();
         for(Integer id: ids){
             User userFound = getUserById(id);
-            List<User> resultList = getAllUsers();
             resultList.remove(userFound);
         }
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
-
-    /* @Override
-    public ResponseEntity<Void> deleteUser(Integer id) {
-        User userFound = getUserById(id);
-        List<User> resultList = getAllUsers();
-        resultList.remove(userFound);
-        return new ResponseEntity<>(HttpStatus.OK);
-    } */
 }
