@@ -1,5 +1,5 @@
-# Consumer-Driven Contract (CDC) Test Sample - Server API application
-Sample application to demonstrate use of Consumer Driven Contract (CDC) with SpringBoot 2.3.0 + Spring Cloud Contract - Server API Sample.
+# Producer-driven Contract and Consumer-Driven Contract tests Sample - Server API application
+Sample application to demonstrate the use of Producer-driven Contract and Consumer Driven Contract tests with SpringBoot 2.3.0 + Spring Cloud Contract - Server API Sample.
 
 This application uses:
 
@@ -43,12 +43,15 @@ For further reference, please consider the following sections:
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
 
 ### Guides
-The following guides illustrate how to use some features concretely:
+The following guides illustrate how to use and setup some features more concretely:
 
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+* [Spring Cloud Contract Docs - Overview](https://spring.io/projects/spring-cloud-contract#overview)
+* [Gradle Setup for Spring Cloud Contract](https://cloud.spring.io/spring-cloud-contract/reference/html/gradle-project.html)
 * [Spring Cloud Contract Verifier Setup](https://cloud.spring.io/spring-cloud-contract/spring-cloud-contract.html#_spring_cloud_contract_verifier_setup)
+* [Como os testes de contrato melhoram a qualidade dos sistemas distribuídos](https://www.infoq.com/br/articles/contract-testing-spring-cloud-contract/)
 
 ### Additional Links
 These additional references should also help you:
