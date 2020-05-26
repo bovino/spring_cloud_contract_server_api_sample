@@ -10,7 +10,7 @@ This application uses:
 - Lombok
 - Java 8
 - Gradle (Gradle wrapper)
-- JUnit e Mockito
+- JUnit 5 e Mockito
 
 You can see the client API application here: https://github.com/bovino/spring_cloud_contract_client_api_sample 
 
