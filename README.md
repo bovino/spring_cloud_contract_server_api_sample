@@ -59,6 +59,7 @@ The following guides illustrate how to use and setup some features more concrete
 * [Spring Cloud Contract Verifier Setup](https://cloud.spring.io/spring-cloud-contract/spring-cloud-contract.html#_spring_cloud_contract_verifier_setup)
 * [Como os testes de contrato melhoram a qualidade dos sistemas distribuídos](https://www.infoq.com/br/articles/contract-testing-spring-cloud-contract/)
 * [GitHub: Spring Cloud Contract Additional Code Samples](https://github.com/spring-cloud-samples/spring-cloud-contract-samples)
+* [Dont like testing? Behold the power of GoHorse Process!!](https://gohorseprocess.com.br/)
 
 ### Additional Links
 These additional references should also help you:
