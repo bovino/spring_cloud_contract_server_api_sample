@@ -35,10 +35,10 @@ This application uses Gradle (Gradle wrapper) and a few useful commands are:
 Before using this application you will need:
 
 - Some IDE with Lombok support (i like IntelliJ)
-- Any API Rest client (i like Postman)
+- Any Rest API client (i like Postman)
 - JDK 1.8,0_251 or newer
 - Configure your JAVA_HOME environment variable
-- You need the ports 8080 (server API) and 8081 (client API) to be free
+- You need the ports 8080 (server API), 8081 (client API) and 8082 (local StubRunner) to be free
 
 ### Reference Documentation
 For further reference, please consider the following sections:
